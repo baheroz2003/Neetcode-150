@@ -18,3 +18,33 @@ public:
         return maxi;
     }
 };
+////
+class Solution {
+public:
+    int longestConsecutive(vector<int>& nums) {
+        if(nums.empty()) return 0;
+
+        sort(nums.begin(), nums.end());
+        int cnt = 1;
+        int maxi = 1;  // should start from 1
+        int i = 0;
+
+        while(i < nums.size() - 1) {
+            if(nums[i+1] == nums[i]) {
+                i++;
+            } 
+            else if(nums[i+1] == nums[i] + 1) {
+                cnt++;
+                maxi = max(maxi, cnt);
+                i++;
+            } 
+            else {
+                cnt = 1;
+                i++;
+            }
+        }
+
+        return maxi;
+    }
+};
+
